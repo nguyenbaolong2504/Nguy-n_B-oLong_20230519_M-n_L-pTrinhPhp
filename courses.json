@@ -1,0 +1,4 @@
+[
+  { "course_code": "PHP01", "course_name": "Lập trình PHP", "credits": 3 },
+  { "course_code": "WEB02", "course_name": "Web nâng cao", "credits": 3 }
+]

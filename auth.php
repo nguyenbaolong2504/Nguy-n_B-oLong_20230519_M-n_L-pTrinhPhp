@@ -1,16 +1,13 @@
 <?php
-declare(strict_types=1);
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+if (session_status() === PHP_SESSION_NONE) session_start();
 
-function is_logged_in(): bool {
-    return !empty($_SESSION['auth']);
-}
-
-function require_login(string $redirect = 'login.php'): void {
-    if (!is_logged_in()) {
-        header("Location: {$redirect}");
+function require_login(): void {
+    if (empty($_SESSION['auth'])) {
+        header('Location: /lab05_hw/login.php');
         exit;
     }
+}
+
+function current_student(): array {
+    return $_SESSION['student'] ?? [];
 }
