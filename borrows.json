@@ -1,0 +1,10 @@
+[
+    {
+        "borrow_id": "BR_6963d3fa50858",
+        "member_name": "001",
+        "book_id": "01",
+        "borrow_date": "2026-01-11",
+        "due_date": "2026-02-02",
+        "status": "Đang mượn"
+    }
+]
