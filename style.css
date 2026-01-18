@@ -1,0 +1,125 @@
+/* RESET NHẸ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    padding: 30px;
+    color: #333;
+}
+
+/* TIÊU ĐỀ */
+h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* FORM */
+#studentForm {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#studentForm input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#studentForm input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+#studentForm button {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#studentForm button:hover {
+    background: #2980b9;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+thead {
+    background: #34495e;
+    color: #fff;
+}
+
+th, td {
+    padding: 10px 12px;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+tbody tr:hover {
+    background: #eef6ff;
+}
+
+/* BUTTON ACTION */
+.btn {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-edit {
+    background: #f1c40f;
+    color: #000;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background: #d4ac0d;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* MESSAGE */
+.empty {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    #studentForm {
+        grid-template-columns: 1fr 1fr;
+    }
+}
