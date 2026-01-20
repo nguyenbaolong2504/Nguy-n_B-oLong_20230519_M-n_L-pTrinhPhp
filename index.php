@@ -1,12 +1,9 @@
 <?php
-$controller = $_GET['c'] ?? 'student';
-$action = $_GET['a'] ?? 'index';
+session_start();
 
-require_once "../app/controllers/StudentController.php";
+require_once "../app/config/db.php";
+require_once "../app/core/Router.php";
+require_once "../app/core/Controller.php";
 
-$ctrl = new StudentController();
-
-if (!method_exists($ctrl, $action)) {
-    die("Action không tồn tại");
-}
-$ctrl->$action();
+$router = new Router($pdo);
+$router->dispatch();
