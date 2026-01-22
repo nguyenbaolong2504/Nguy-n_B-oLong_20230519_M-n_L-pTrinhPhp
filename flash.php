@@ -1,13 +1,15 @@
 <?php
-function set_flash(string $type, string $msg): void {
-    $_SESSION['flash'][$type] = $msg;
+session_start();
+
+function set_flash($msg, $type = 'success') {
+    $_SESSION['flash'] = compact('msg', 'type');
 }
 
-function get_flash(string $type): ?string {
-    if (!empty($_SESSION['flash'][$type])) {
-        $msg = $_SESSION['flash'][$type];
-        unset($_SESSION['flash'][$type]);
-        return $msg;
+function get_flash() {
+    if (!empty($_SESSION['flash'])) {
+        $f = $_SESSION['flash'];
+        unset($_SESSION['flash']);
+        return $f;
     }
     return null;
 }
