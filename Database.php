@@ -1,24 +1,14 @@
 <?php
 class Database {
-    private static $instance = null;
-    private $conn;
+    protected static $conn = null;
 
-    private function __construct() {
-        $config = require __DIR__ . '/../config/db.php';
-        $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8mb4";
-
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ];
-
-        $this->conn = new PDO($dsn, $config['user'], $config['pass'], $options);
-    }
-
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new Database();
+    public static function connect() {
+        if (self::$conn === null) {
+            $config = require __DIR__ . '/../config/database.php';
+            $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8mb4";
+            self::$conn = new PDO($dsn, $config['user'], $config['pass']);
+            self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
-        return self::$instance->conn;
+        return self::$conn;
     }
 }

@@ -1,24 +1,19 @@
 <?php
 class Router {
-    private $pdo;
-
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
-    }
-
-    public function dispatch() {
-        $c = $_GET['c'] ?? 'home';
+    public static function dispatch() {
+        $c = $_GET['c'] ?? 'category';
         $a = $_GET['a'] ?? 'index';
 
-        $controller = ucfirst($c) . "Controller";
-        $file = "../app/controllers/$controller.php";
+        $controllerName = ucfirst($c) . 'Controller';
+        $file = __DIR__ . '/../app/Controllers/' . $controllerName . '.php';
 
-        if (!file_exists($file)) die("Controller not found");
+        if (!file_exists($file)) die('Controller not found');
 
-        require_once $file;
-        $obj = new $controller($this->pdo);
+        require $file;
+        $controller = new $controllerName();
 
-        if (!method_exists($obj, $a)) die("Action not found");
-        $obj->$a();
+        if (!method_exists($controller, $a)) die('Action not found');
+
+        $controller->$a();
     }
 }
